@@ -28,6 +28,7 @@ gem 'jquery-rails'
 group :test, :development do
   gem 'rspec-rails' , '~> 2.0'
   gem 'thin'        , '~> 1.5.1'
+  gem 'timecop'     , '~> 0.6.2.2'
   gem 'faker'
 end
 

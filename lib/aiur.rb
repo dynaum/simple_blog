@@ -1,4 +1,5 @@
 require 'aiur/collection'
+require 'aiur/logger'
 
 module Aiur
   MESSAGE_SEPARATOR = "::"
