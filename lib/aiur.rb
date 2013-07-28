@@ -1,6 +1,6 @@
 module Aiur
 end
 
-require 'aiur/client'
-require 'aiur/collection'
-require 'aiur/logger'
+require_relative 'aiur/client'
+require_relative 'aiur/collection'
+require_relative 'aiur/logger'
