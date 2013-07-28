@@ -9,6 +9,9 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
+require File.expand_path('../../lib/app_config', __FILE__)
+require File.expand_path('../../lib/aiur', __FILE__)
+
 module SimpleBlog
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.

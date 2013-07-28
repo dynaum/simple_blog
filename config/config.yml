@@ -1,0 +1,4 @@
+development:
+  zeromq_uri: http://localhost:5555
+test:
+  zeromq_uri: http://localhost:5555
