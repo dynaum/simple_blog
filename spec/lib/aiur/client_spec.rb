@@ -1,19 +1,13 @@
 require 'spec_helper'
 
-describe Aiur do
+describe Aiur::Client do
   let(:mock_context) { mock socket: mock_socket }
   let(:mock_socket)  { mock connect: true, send_string: 'send response' }
-
-  class MockLog
-    include Aiur
-  end
 
   before do
     ZMQ::Context.stub(:new).and_return mock_context
     mock_socket.stub(:recv_string) { |result| result.replace 'recv response' }
   end
-
-  subject { MockLog.new }
 
   describe "#add" do
     it "should open ZMQ::REQ socket" do

@@ -35,4 +35,12 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  config.before do
+    mock_socket  = mock connect: true, send_string: '', recv_string: ''
+    mock_context = mock socket: mock_socket
+
+    ZMQ::Context.stub(:new).and_return mock_context
+  end
 end
+

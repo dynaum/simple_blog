@@ -26,7 +26,7 @@ module Aiur
     private
 
     def parse_data
-      @items    = @data.split(Aiur::MESSAGE_SEPARATOR)
+      @items    = @data.split(Aiur::Client::MESSAGE_SEPARATOR)
       @total    = @items.delete_at 0
       @per_page = @items.delete_at 0
     end

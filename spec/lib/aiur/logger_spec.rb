@@ -22,7 +22,7 @@ describe Aiur::Logger do
   subject { FakeModel.new }
 
   before do
-    Aiur.stub(:new).and_return aiur_mock
+    Aiur::Client.stub(:new).and_return aiur_mock
     Timecop.freeze Time.local(2013, 1, 21, 10, 0, 0)
   end
 
