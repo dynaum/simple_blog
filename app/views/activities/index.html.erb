@@ -1,0 +1,15 @@
+<h2>Recent Activities</h2>
+<% @logs.each do |log| %>
+  <div class="log">
+    <h3><%= log.class_name %></h3>
+    <p>
+      Action:
+      <%= log.action %>
+      <br>
+      Occurred at:
+      <%= l log.timestamp %>
+    </p>
+  </div>
+<% end %>
+
+<%= will_paginate @logs %>
