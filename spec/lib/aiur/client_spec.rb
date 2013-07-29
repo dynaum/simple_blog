@@ -32,7 +32,7 @@ describe Aiur::Client do
     end
 
     it "pass current page to collection" do
-      Aiur::Collection.should_receive(:new).with "recv response", 0
+      Aiur::Collection.should_receive(:new).with "recv response", 1
       subject.list
     end
 
@@ -43,7 +43,7 @@ describe Aiur::Client do
 
     it "should send the correct page" do
       mock_socket.should_receive(:send_string).with "list::1"
-      subject.list 1
+      subject.list "2"
     end
   end
 end
