@@ -8,7 +8,7 @@ module Aiur
     end
 
     def each
-      @items.each { |item| yield item }
+      @items.each { |item| yield Item.new(item) }
     end
 
     def total
