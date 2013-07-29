@@ -6,7 +6,7 @@ module Aiur
       request { make_message(:add, message) }
     end
 
-    def all(page = 0)
+    def list(page = 0)
       Collection.new(request { make_message(:list, page) }, page)
     end
 

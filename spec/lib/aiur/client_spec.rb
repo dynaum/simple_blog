@@ -26,24 +26,24 @@ describe Aiur::Client do
     end
   end
 
-  describe "#all" do
+  describe "#list" do
     it "should instantiate and return the Aiur::Conllection" do
-      subject.all.should be_a Aiur::Collection
+      subject.list.should be_a Aiur::Collection
     end
 
     it "pass current page to collection" do
       Aiur::Collection.should_receive(:new).with "recv response", 0
-      subject.all
+      subject.list
     end
 
     it "should get collection via zeromq" do
       mock_socket.should_receive(:send_string).with "list::0"
-      subject.all
+      subject.list
     end
 
     it "should send the correct page" do
       mock_socket.should_receive(:send_string).with "list::1"
-      subject.all 1
+      subject.list 1
     end
   end
 end
