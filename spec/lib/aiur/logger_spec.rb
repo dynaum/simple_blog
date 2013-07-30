@@ -1,8 +1,11 @@
 require 'spec_helper'
 
 describe Aiur::Logger do
-  let(:aiur_mock) { mock add: "success" }
-  let(:article)   { Article.create title: 'My title', body: 'My body' }
+  let(:article) { Article.create title: 'My title', body: 'My body' }
+
+  before do
+    Timecop.freeze Time.local(2013, 1, 21, 10, 0, 0)
+  end
 
   class FakeModel
     include ActiveSupport::Callbacks
@@ -21,15 +24,10 @@ describe Aiur::Logger do
 
   subject { FakeModel.new }
 
-  before do
-    Aiur::Client.stub(:new).and_return aiur_mock
-    Timecop.freeze Time.local(2013, 1, 21, 10, 0, 0)
-  end
-
   after { Timecop.return }
 
   it "should call Aiur to store the message" do
-    aiur_mock.should_receive(:add).with('{"class":"FakeModel","action":"create","timestamp":"2013-01-21T10:00:00-02:00"}')
+    AiurClient.should_receive(:add).with('{"class":"FakeModel","action":"create","timestamp":"2013-01-21T10:00:00-02:00"}')
     subject.run_callbacks :create
   end
 

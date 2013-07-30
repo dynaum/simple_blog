@@ -1,0 +1,1 @@
+AiurClient = Aiur::Client.new

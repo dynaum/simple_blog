@@ -2,6 +2,10 @@ module Aiur
   class Client
     MESSAGE_SEPARATOR = "::"
 
+    def initialize
+      connect
+    end
+
     def add(message)
       request { make_message(:add, message) }
     end
@@ -14,7 +18,6 @@ module Aiur
     private
 
     def request
-      connect
       socket.send_string yield
       "".tap { |result| socket.recv_string result }
     end

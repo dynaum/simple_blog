@@ -37,10 +37,9 @@ RSpec.configure do |config|
   config.order = "random"
 
   config.before do
-    mock_socket  = mock connect: true, send_string: '', recv_string: ''
-    mock_context = mock socket: mock_socket
-
-    ZMQ::Context.stub(:new).and_return mock_context
+    collection = Aiur::Collection.new("", 1)
+    AiurClient.stub :add
+    AiurClient.stub(:list).and_return collection
   end
 end
 

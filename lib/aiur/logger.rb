@@ -27,7 +27,7 @@ module Aiur
     end
 
     def service
-      @service ||= Aiur::Client.new
+      AiurClient
     end
   end
 end
