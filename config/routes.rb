@@ -6,7 +6,7 @@ SimpleBlog::Application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
 
-  get 'activities/(:page)', to: 'activities#index'
+  get 'activities/(:page)', to: 'activities#index', as: :activities
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
