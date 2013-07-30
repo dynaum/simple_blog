@@ -2,7 +2,7 @@ require 'will_paginate/array'
 
 class ActivitiesController < ApplicationController
   def index
-    list = Aiur::Client.new.list(params[:page])
-    @logs = list.to_a.paginate page: params[:page], per_page: list.per_page, total_entries: list.total
+    @logs = AiurClient.list(params[:page])
+    @paginated_logs = @logs.to_a.paginate page: params[:page], per_page: @logs.per_page, total_entries: @logs.total
   end
 end
